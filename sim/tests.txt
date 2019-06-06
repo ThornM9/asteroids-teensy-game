@@ -1,0 +1,174 @@
+Test 1
+Category        : 2.
+Input Sequence  : start game
+Expected Outcome: shield is displayed as a 1 pixel high dotted line in row 39
+Status          : Passed
+
+Test 2
+Category        : 3.i, 3.ii, 3.iii
+Input Sequence  : start game
+Expected Outcome: starfighter is 15x7 pixels with a turret included in the 7 pixel height.
+Status          : Passed
+
+Test 3
+Category        : 3.iv, 3.v
+Input Sequence  : 'r', 'p', wait 2 seconds, 'r'
+Expected Outcome: starfighter is horizontally centred in the bottom 8 rows and is stationary on start and reset.
+Status          : Passed
+
+Test 4
+Category        : 3.vi, 3.vii
+Input Sequence  : 'r', 'p' 
+Expected Outcome: starfighter moves horizontally and does not overlap shield
+Status          : Passed
+
+Test 5
+Category        : 4.i to 4.iv
+Input Sequence  : 'r', 'p'
+Expected Outcome: two seconds after game is started asteroids fall from the top of the screen. 3 asteroids spawn at random horizontal positions 
+        above the top of the screen and move smoothly into view. Asteroids do not leave the left, right or bottom edges of screen.
+Status          : Passed
+
+Test 6
+Category        : 4.v to 4.x
+Input Sequence  : 'r', 'p', wait until asteroids are near shield, set velocity to 0 using right wheel, shoot 1 asteroid, 's', shoot 1 boulder, 's', shoot 1 fragment, 
+        increase velocity with right wheel, wait for objects to hit shield, 's', wait for new wave of asteroids to come into view, 'p'
+Expected Outcome: When hit with a plasma bolt, asteroids split to form 2 boulders and boulders split to form 2 fragments and fragments disappear when hit.
+        When object splits, both child objects fall straight down. Game status is sent to computer with data to show that objects have given points when shot
+        (1 point for asteroids, 2 for boulders, 4 for fragments). After objects hit shield, they disappear and lives are reduced (seen in game status). 
+        After all asteroids, boulders and gragments disappear, a new wave of 3 asteroids appears and scrolls into view.
+Status          : Passed
+
+Test 7
+Category        : 5, 6
+Input Sequence  : 'r', 'p', 's', 'p', 's'
+Expected Outcome: Game status is sent to computer only on 's' press because teensy is in play. Second 's' press sends game status to computer and displays concise summary
+        on teensy screen. The information displayed on the teensy screen is the game time, lives and score. The information sent to the computer is the game time, lives, score,
+        number of asteroids, number of boulders, number of fragments, number of plasma bolts, turret aim and game velocity.
+Status          : Passed
+
+Test 8
+Category        : 7.
+Input Sequence  : 'r', 'p', speed up asteroids with right wheel, wait until asteroids are near shield, stop asteroids with right wheel, 
+        use left wheel to aim and 'w' to shoot at asteroids at an angle so that plasma enters the 7x7 bounding box without a pixel level collision. 
+Expected Outcome: plasma enters and exits the 7x7 bounding box without causing a collision unless pixel level collision occurs.
+Status          : Passed
+
+Test 9
+Category        : 8.i to 8.viii
+Input Sequence  : 'r', 'p', move left and right with joystick left and right, move left and right with 'a' and 'd', use controls to move to either side of the screen
+Expected Outcome: moving the joystick left or pressing 'a' increases the starfighters velocity in the left direction. moving the joystick right or pressing 'd' increases
+        the starfighters velocity in the right direction. when the starfighter reaches the edge of the screen, it stops moving. 
+Status          : Passed
+
+Test 10
+Category        : 9.i to 9.iv
+Input Sequence  : 'r', 'p', use right wheel to set game velocity to 0, use left wheel to aim turret to the maximum left position, 's', use left wheel to aim turret to maximum right position, 's',
+         'o', '512', press enter
+Expected Outcome: first game status will display that turret angle is -60, second game status will display that turret angle is 60, setting angle to 512 will make turret aim upwards for 1 second
+        before reverting to the reading from the left wheel.
+Status          : Passed
+
+Test 11
+Category        : 10.i to 10.v
+Input Sequence  : 'r', 'p', joystick up for 2 seconds, 'w' for 2 seconds, shoot asteroid, shoot upwards until maximum number of plasma is reached 
+Expected Outcome: joystick up or 'w' will fire plasma bolts in the direction the cannon is aimed at a rate of 1 every 0.2 seconds. bolts disappear when they hit an asteroid or when they reach the edge 
+        of the screen. 20 bolts will appear on screen while firing upwards and nothing happens when firing after this number is reached.
+Status          : Passed
+
+Test 12
+Category        : 11.
+Input Sequence  : load program, wait a few seconds, press left button, reload program, wait a few seconds, 'r'
+Expected Outcome: introduction initially displays student number (n9576321), game title (ASTRDZ), flying ship animation and backlight turns on. pressing left button or 'r' skips the introduction.
+Status          : Passed
+
+Test 13
+Category        : 12.i to 12.vii
+Input Sequence  : 'r', wait 2 seconds, 'p'
+Expected Outcome: the game is paused. there are no plasma bolts or asteroids on screen. the game status on computer shows the game time is 00:00, the score is 0 and lives are 5. the starfighter and deflector shield are visible
+Status          : Passed
+
+Test 14
+Category        : 13
+Input Sequence  : 'r' 'p', wait a few seconds, 's'
+Expected Outcome: after initially unpausing the game, the game status and a game starting message is sent to the computer. in the second game status message, the time is incremented from the start
+Status          : Passed
+
+Test 15
+Category        : 14.
+Input Sequence  : 'r', 'p', wait 2 seconds, 'p', wait 2 seconds, 's', press joystick center
+Expected Outcome: game is unpaused initially with 'p', then paused with 'p'. game status shows that time did not increment during pause. joystick center unpauses game
+Status          : Passed
+
+Test 16
+Category        : 15.i to 15.iii
+Input Sequence  : 'r', 'p', wait for asteroids to come into view, repeat 6 times
+Expected Outcome: when more asteroids are on the left side of the screen, left led flashes, when more asteroids are on the right, right led flashes.
+Status          : Passed
+
+Test 17
+Category        : 16.i to 16.iv
+Input Sequence  : 'r', 'p', 'l', '0', ' '
+Expected Outcome: current status is sent along with game over message. backlight fades off, leds turn on for 2 seconds and "game over" is displayed on screen. 
+        backlight fades on, leds turn off and options to quit or restart are given.
+Status          : Passed
+
+Test 18
+Category        : 17.
+Input Sequence  : 'r', 'p', 'l', '0', ' ', wait a few seconds, 'r'
+Expected Outcome: selecting restart after game over message takes game back to game start state
+Status          : Passed
+
+Test 19
+Category        : 18.
+Input Sequence  : 'r', 'p', 'l', '0', ' ', wait a few seconds, 'q'
+Expected Outcome: selecting quit after game over message inverses the teensy screen mode and displays student number only
+Status          : Passed
+
+Test 20
+Category        : 19.
+Input Sequence  : 'r', 'p', use right wheel to set maximum velocity, wait a few seconds, use right wheel to stop game, 'm', '1023', ' '
+Expected Outcome: right wheel increases velocity of asteroids falling, then stops asteroids falling. setting velocity with 'm' overrides the right wheel for 1 second
+Status          : Passed
+
+Test 21
+Category        : 21.i
+Input Sequence  : 'r', 'p', 'l', '10', ' ', 's'
+Expected Outcome: in initial game status, lives are 5. in second sent game status, lives are 10
+Status          : Passed
+
+Test 22
+Category        : 21.ii
+Input Sequence  : 'r', 'p', 'g', '10', ' ', 's'
+Expected Outcome: in initial game status, score is 0. in second sent game status, score is 10
+Status          : Passed
+
+Test 23
+Category        : 21.iii
+Input Sequence  : 'r', 'p', '?'
+Expected Outcome: game controls are sent to computer screen
+Status          : Passed
+
+Test 24
+Category        : 21.iv
+Input Sequence  : 'r', 'p', 'h', '10', ' '
+Expected Outcome: spaceship moves to x=10 with the same y coordinate
+Status          : Passed
+
+Test 25
+Category        : 21.v
+Input Sequence  : 'r', 'p', shoot one asteroid so another can spawn, 'j', '10', enter, '20', enter
+Expected Outcome: asteroid appears at specified x and y coordinates (10, 20)
+Status          : Passed
+
+Test 26
+Category        : 21.vi
+Input Sequence  : 'r', 'p', 'k', '10', enter, '20', enter
+Expected Outcome: boulder appears at specified x and y coordinates (10, 20)
+Status          : Passed
+
+Test 27
+Category        : 21.vii
+Input Sequence  : 'r', 'p', 'i', '10', enter, '20', enter
+Expected Outcome: fragment appears at specified x and y coordinates (10, 20)
+Status          : Passed
